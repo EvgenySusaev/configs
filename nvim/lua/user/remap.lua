@@ -1,7 +1,10 @@
 vim.g.mapleader = ' '
 
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
+-- Map 'jk' to <Esc> in all modes
+vim.api.nvim_set_keymap('', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('!', 'jk', '<Esc>', { noremap = true, silent = true })
+
 
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window ", remap = true })

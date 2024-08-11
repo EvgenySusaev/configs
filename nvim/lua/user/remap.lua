@@ -2,8 +2,7 @@ vim.g.mapleader = ' '
 
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 -- Map 'jk' to <Esc> in all modes
-vim.api.nvim_set_keymap('', 'jk', '<Esc>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('!', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 
 
 -- Move to window using the <ctrl> hjkl keys

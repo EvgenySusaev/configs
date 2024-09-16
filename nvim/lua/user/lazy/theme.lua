@@ -4,7 +4,8 @@ return {
     lazy = false,
     config = function()
         require("rose-pine").setup({
-            variant = "main",
+            variant = "auto",
+            dark_variant = "moon",
             extend_background_behind_borders = true,
 
             enable = {
@@ -19,6 +20,6 @@ return {
                 transparency = true,
             },
         })
-        vim.cmd.colorscheme('rose-pine')
+        vim.cmd.colorscheme('rose-pine-moon')
     end
 }

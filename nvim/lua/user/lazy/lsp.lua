@@ -4,48 +4,29 @@ return {
     local lspconfig = require('lspconfig')
 
     -- Setup for OmniSharp (C# LSP)
-    lspconfig.omnisharp.setup {
-        cmd = { "dotnet", "/path/to/omnisharp/OmniSharp.dll" },
-
+    lspconfig.csharp_ls.setup {
+        cmd = { "csharp-ls" },
+        filetypes = { "cs" },  -- Add more if needed
+        root_dir = lspconfig.util.root_pattern(".git", "*.sln", "*.csproj"),
         settings = {
-          FormattingOptions = {
-            -- Enables support for reading code style, naming convention and analyzer
-            -- settings from .editorconfig.
-            EnableEditorConfigSupport = true,
-            -- Specifies whether 'using' directives should be grouped and sorted during
-            -- document formatting.
-            OrganizeImports = nil,
-          },
-          MsBuild = {
-            -- If true, MSBuild project system will only load projects for files that
-            -- were opened in the editor. This setting is useful for big C# codebases
-            -- and allows for faster initialization of code navigation features only
-            -- for projects that are relevant to code that is being edited. With this
-            -- setting enabled OmniSharp may load fewer projects and may thus display
-            -- incomplete reference lists for symbols.
-            LoadProjectsOnDemand = nil,
-          },
-          RoslynExtensionsOptions = {
-            -- Enables support for roslyn analyzers, code fixes and rulesets.
-            EnableAnalyzersSupport = nil,
-            -- Enables support for showing unimported types and unimported extension
-            -- methods in completion lists. When committed, the appropriate using
-            -- directive will be added at the top of the current file. This option can
-            -- have a negative impact on initial completion responsiveness,
-            -- particularly for the first few completion sessions after opening a
-            -- solution.
-            EnableImportCompletion = nil,
-            -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-            -- true
-            AnalyzeOpenDocumentsOnly = nil,
-          },
-          Sdk = {
-            -- Specifies whether to include preview versions of the .NET SDK when
-            -- determining which version to use for project loading.
-            IncludePrereleases = true,
-          },
+            enableEditorConfigSupport = true,  -- Enable EditorConfig support
+            enableRoslynAnalyzers = true,      -- Enable Roslyn analyzers
         },
+        on_attach = function(client, bufnr)
+            -- Keymaps for LSP features
+            local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+            local opts = { noremap=true, silent=true }
+
+            -- Example LSP keybindings
+            buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+            buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+            buf_set_keymap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+            buf_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+            buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+            buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
+        end
     }
+
     -- Setup for tsserver (TypeScript/JavaScript LSP)
     lspconfig.ts_ls.setup {
       on_attach = function(client, bufnr)

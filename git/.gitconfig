@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = master
+[user]
+	name = EvgenySusaev
+	email = susaevjack@yandex.ru
+[credential]
+	helper = store
+[core]
+	editor = nvim
+	autocrlf = input

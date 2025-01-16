@@ -40,6 +40,30 @@ return {
  --     capabilities = require('cmp_nvim_lsp').default_capabilities(),
       root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
     }
+    -- Setup for rust-analyzer (Rust LSP)
+    lspconfig.rust_analyzer.setup {
+      cmd = { "rust-analyzer" },
+      filetypes = { "rust" },
+      root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json", ".git"),
+      settings = {
+          ["rust-analyzer"] = {
+              cargo = {
+                  allFeatures = true,
+              },
+              checkOnSave = {
+                  command = "clippy",  -- Use clippy for linting
+              },
+          },
+      },
+      on_attach = function(client, bufnr)
+          local bufopts = { noremap = true, silent = true, buffer = bufnr }
+          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+          vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+          vim.keymap.set('n', '<leader>f', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', bufopts)
+      end,
+    }
   end
 }
 

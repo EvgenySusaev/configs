@@ -40,6 +40,7 @@ return {
  --     capabilities = require('cmp_nvim_lsp').default_capabilities(),
       root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
     }
+
     -- Setup for rust-analyzer (Rust LSP)
     lspconfig.rust_analyzer.setup {
       cmd = { "rust-analyzer" },

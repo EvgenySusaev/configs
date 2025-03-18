@@ -34,3 +34,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+
+vim.opt.laststatus = 2  -- Separate status line for each window
+--vim.o.winbar = "%=%f %m"

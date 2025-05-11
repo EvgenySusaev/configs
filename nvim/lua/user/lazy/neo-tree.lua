@@ -1,11 +1,16 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+   cmd = 'Neotree',
+   opts = {
+    filesystem = {
+      hijack_netrw_behavior = 'open_default'
+    }
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
-  event = "VeryLazy",
   keys = {
     -- { "<leader>e", ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
     -- { "<leader><Tab>", ":Neotree toggle left<CR>", silent = true, desc = "Left File Explorer" },
@@ -51,7 +56,7 @@ return {
         },
       },
       window = {
-        position = "float",
+        position = "left",
         width = 35,
       },
       filesystem = {

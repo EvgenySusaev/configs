@@ -1,3 +1,3 @@
-require('user.remap')
-require('user.set')
-require('user.lazy_init')
+require('user.keymaps')
+require('user.options')
+require('user.init_lazy')

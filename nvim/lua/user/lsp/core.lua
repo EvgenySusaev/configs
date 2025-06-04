@@ -8,27 +8,26 @@ local function on_attach(client, bufnr)
     opts = vim.tbl_extend("force", { noremap = true, silent = true }, opts or {})
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
   end
+  local l = "<leader>l"
 
   -- Go to definition, declaration, implementation
-  buf_map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  buf_map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  buf_map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  buf_map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-
+  buf_map("n", l .. "d", "<cmd>lua vim.lsp.buf.definition()<CR>")
+  buf_map("n", l .. "D", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  buf_map("n", l .. "i", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  buf_map("n", l .. "r", "<cmd>lua vim.lsp.buf.references()<CR>")
   -- Hover documentation, signature help
-  buf_map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  buf_map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-
+  buf_map("n", l .. "h", "<cmd>lua vim.lsp.buf.hover()<CR>")
+  buf_map("n", l .. "s", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   -- Rename, code actions, format
-  buf_map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  buf_map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  buf_map("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  buf_map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
+  buf_map("n", l .. "R", "<cmd>lua vim.lsp.buf.rename()<CR>")
+  buf_map("n", l .. "a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  buf_map("v", l .. "a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  buf_map("n", l .. "f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
 
   -- Diagnostics
-  buf_map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
-  buf_map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-  buf_map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+  buf_map("n", l .. "l", "<cmd>lua vim.diagnostic.open_float()<CR>")
+  buf_map("n", l .. "[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+  buf_map("n", l .. "]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 end
 
 -- Capabilities (e.g., for nvim-cmp)

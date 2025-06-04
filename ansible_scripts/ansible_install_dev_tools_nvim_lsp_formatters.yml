@@ -1,0 +1,58 @@
+---
+- name: Install LSPs and formatters for Neovim
+  hosts: localhost
+  become: true
+  vars:
+    node_packages:
+      - typescript-language-server
+      - prettier
+    rust_tools:
+      - rust-analyzer
+      - rustfmt
+    dotnet_tools:
+      - csharp-ls
+
+  tasks:
+    - name: Ensure required system packages are installed
+      package:
+        name:
+          - nodejs
+          - npm
+          - cargo
+          - dotnet-sdk
+        state: present
+
+    - name: Install global npm packages
+      npm:
+        name: "{{ item }}"
+        global: yes
+      loop: "{{ node_packages }}"
+
+    - name: Install rust tools with cargo
+      become: false
+      shell: "cargo install {{ item }}"
+      args:
+        creates: "~/.cargo/bin/{{ item }}"
+      loop: "{{ rust_tools }}"
+
+    - name: Install csharp-ls via dotnet tool
+      become: false
+      shell: "dotnet tool install --global {{ item }}"
+      args:
+        creates: "~/.dotnet/tools/{{ item }}"
+      loop: "{{ dotnet_tools }}"
+
+    - name: Add dotnet tools path to PATH in ~/.bashrc
+      lineinfile:
+        path: ~/.bashrc
+        line: 'export PATH="$PATH:$HOME/.dotnet/tools"'
+        insertafter: EOF
+        state: present
+
+    - name: Add cargo bin to PATH in ~/.bashrc
+      lineinfile:
+        path: ~/.bashrc
+        line: 'export PATH="$PATH:$HOME/.cargo/bin"'
+        insertafter: EOF
+        state: present
+

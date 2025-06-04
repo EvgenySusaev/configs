@@ -1,0 +1,38 @@
+---
+- name: Install Node.js locally
+  hosts: localhost
+  connection: local
+  become: yes  # To run with elevated privileges (sudo)
+  tasks:
+    - name: Update apt package cache (Debian/Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Node.js (Debian/Ubuntu)
+      apt:
+        name: nodejs
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Node.js (RHEL/CentOS/Fedora)
+      yum:
+        name: nodejs
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install EPEL repository on CentOS/RHEL 7 or newer
+      yum:
+        name: epel-release
+        state: present
+      when: ansible_os_family == "RedHat" and ansible_distribution_version is version('7', '>=')
+
+    - name: Ensure Node.js is installed and check version
+      command: node --version
+      register: node_version
+      changed_when: false
+
+    - name: Display Node.js version
+      debug:
+        var: node_version.stdout
+

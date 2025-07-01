@@ -65,6 +65,7 @@
           - gcc
           - newsboat
           - fzf
+          - ranger
         state: present
 
     - name: Install Docker key dependencies

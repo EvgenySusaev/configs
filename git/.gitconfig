@@ -3,6 +3,8 @@
 [user]
 	name = EvgenySusaev
 	email = susaevjack@yandex.ru
+[credential]
+	helper = cache --timeout=300
 [core]
 	editor = vim
 	autocrlf = input

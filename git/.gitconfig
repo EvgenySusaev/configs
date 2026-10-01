@@ -1,8 +1,5 @@
 [init]
 	defaultBranch = master
-[user]
-	name = EvgenySusaev
-	email = susaevjack@yandex.ru
 [credential]
 	helper = cache --timeout=300
 [core]

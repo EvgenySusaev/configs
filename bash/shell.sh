@@ -1,12 +1,10 @@
-# ~/.config/bash/shell.sh — общие настройки оболочки (роль dev_dotfiles), подключается из ~/.bashrc.
+# ~/.config/bash/shell.sh — общие настройки оболочки (репозиторий configs), подключается из ~/.bashrc.
 export PATH="$HOME/.local/bin:$PATH"
 
 # neovim — редактор по умолчанию везде
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER="nvim +Man!"
-alias vi='nvim'
-alias vim='nvim'
 
 # Имена команд в Ubuntu: fd-find → fdfind, bat → batcat.
 alias fd='fdfind'

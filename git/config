@@ -1,0 +1,25 @@
+# ~/.config/git/config — роль dev_dotfiles (общие настройки, перезаписывается при прогоне).
+# Имя и почта — в identity рядом (git_name / git_email у учётки в users_accounts).
+# Если остался старый ~/.gitconfig — он читается после и перекрывает одноимённые
+# ключи; удалить его вручную.
+[include]
+	path = identity
+[init]
+	defaultBranch = main
+[credential]
+	helper = cache --timeout=300
+[core]
+	editor = nvim
+	autocrlf = input
+	pager = delta
+[pull]
+	rebase = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default

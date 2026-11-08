@@ -1,5 +1,5 @@
-# ~/.config/git/config — роль dev_dotfiles (общие настройки, перезаписывается при прогоне).
-# Имя и почта — в identity рядом (git_name / git_email у учётки в users_accounts).
+# ~/.config/git/config — репозиторий configs (общие настройки).
+# Имя и почта — в identity рядом (файл создаёт ansible из записи пользователя в inventory).
 # Если остался старый ~/.gitconfig — он читается после и перекрывает одноимённые
 # ключи; удалить его вручную.
 [include]

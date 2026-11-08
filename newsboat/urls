@@ -1,4 +1,4 @@
-# ~/.config/newsboat/urls (roles/dev_dotfiles). Одна лента на строку, # — комментарий.
+# ~/.config/newsboat/urls (репозиторий configs). Одна лента на строку, # — комментарий.
 
 # --- новости / системы ---
 https://archlinux.org/feeds/news/

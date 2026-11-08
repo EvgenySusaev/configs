@@ -1,4 +1,4 @@
--- ~/.config/nvim/init.lua (roles/dev_dotfiles). Нативный LSP neovim 0.11+ (не LazyVim:
+-- ~/.config/nvim/init.lua (репозиторий configs). Нативный LSP neovim 0.11+ (не LazyVim:
 -- lazy.nvim здесь только менеджер плагинов). Серверы ставит роль dev_toolchains, их
 -- пути в PATH — ~/.config/bash/toolchains.sh; здесь только запуск. Не установлен
 -- сервер — ошибка появится при открытии файла соответствующего типа.
@@ -176,7 +176,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- lazy.nvim клонируется ниже (закреплённый тег), плагины ставит playbook командой
 -- `nvim --headless "+Lazy! sync"`. Все версии закреплены здесь: tag / commit. Обновить =
 -- поменять значение и прогнать playbook (изменение init.lua запускает повторную установку).
--- lazy-lock.json вынесен из ~/.config, чтобы не конфликтовать с ansible.
+-- lazy-lock.json вынесен из ~/.config, чтобы не попадать в репозиторий configs.
 
 local ts_langs = {
   "angular", "bash", "c", "c_sharp", "clojure", "cmake", "cpp", "css", "diff", "dockerfile",

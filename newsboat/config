@@ -1,4 +1,4 @@
-# ~/.config/newsboat/config (roles/dev_dotfiles). Ленты — в соседнем файле urls.
+# ~/.config/newsboat/config (репозиторий configs). Ленты — в соседнем файле urls.
 auto-reload yes
 reload-time 30
 reload-threads 4

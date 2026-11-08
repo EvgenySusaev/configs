@@ -1,0 +1,3 @@
+# Состояние newsboat (статьи, отметки о прочитанном, история) — не конфиг.
+newsboat/cache.db*
+newsboat/history.*

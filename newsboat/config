@@ -1,18 +1,25 @@
-color listnormal            color15 default 
-color listnormal_unread     color2  default
-color listfocus_unread      color2  color0
-color listfocus             default color0
-color background            default default
-color article               default default
-color end-of-text-marker    color8  default
-color info                  color4  color8
+# ~/.config/newsboat/config (roles/dev_dotfiles). Ленты — в соседнем файле urls.
+auto-reload yes
+reload-time 30
+reload-threads 4
+max-items 500
+cleanup-on-quit yes
+show-read-feeds no
+prepopulate-query-feeds yes
+confirm-exit yes
 
+# навигация как в vim
+bind-key j down
+bind-key k up
+bind-key h quit
+bind-key l open
+bind-key g home
+bind-key G end
+bind-key ^F pagedown
+bind-key ^B pageup
 
-highlight article "^Feed|Title|Author|Link|Date): .+" color4 default bold
-highlight article "^Feed|Title|Author|Link|Date):" color14 default bold
+# открывать ссылки в браузере по умолчанию
+browser "xdg-open %u"
 
-highlight article "\\((link|image|video)\\)" color8 default 
-highlight article "https?://[^ ]+" color4 default 
-highlight article "\[[0-9]+\]" color6 default bold
-
-browser "/usr/bin/brave"
+# Цвета лежат в colors рядом и не применяются. Включить — раскомментировать:
+# include ~/.config/newsboat/colors

@@ -1,19 +1,29 @@
+# ~/.config/newsboat/urls (roles/dev_dotfiles). Одна лента на строку, # — комментарий.
+
+# --- новости / системы ---
 https://archlinux.org/feeds/news/
 https://www.opennet.ru/opennews/opennews_all.rss
+
+# --- блоги ---
 https://irina.codes/feed/feed.xml
 https://blog.jetbrains.com/feed/
-https://cloud.mave.digital/37167
 https://vas3k.blog/rss/
-https://www.c-sharpcorner.com/rss/blogs.aspx
-https://www.nhk.or.jp/lesson/en/rss/podcast.xml
-https://feeds.soundcloud.com/users/soundcloud:users:259154388/sounds.rss
-https://infomate.club/
 https://rakhim.org/index.xml
-https://capital-gain.ru/feed/
-https://basicblockradio.libsyn.com/rss
 https://www.yegor256.com/rss.xml
 https://luminousmen.com/feeds/
 https://www.pvsm.ru/feed
 https://brennan.io/blog/rss.xml
 https://sergeyteplyakov.github.io/Blog/feed.xml
+
+# --- подкасты / видео ---
+https://cloud.mave.digital/37167
+https://www.nhk.or.jp/lesson/en/rss/podcast.xml
+https://feeds.soundcloud.com/users/soundcloud:users:259154388/sounds.rss
+https://basicblockradio.libsyn.com/rss
 https://3blue1brown.substack.com/feed
+
+# --- не отдают ленту (проверено 2026-10-22), newsboat выдавал бы ошибку при каждой загрузке ---
+# Вернуть, когда найдётся рабочий адрес ленты.
+# https://www.c-sharpcorner.com/rss/blogs.aspx   # отдаёт HTML (возможно, блокирует не-браузеры)
+# https://infomate.club/                         # HTML-страница, не RSS
+# https://capital-gain.ru/feed/                  # HTTP 404

@@ -1,3 +1,6 @@
 # Состояние newsboat (статьи, отметки о прочитанном, история) — не конфиг.
 newsboat/cache.db*
 newsboat/history.*
+
+# Имя и почта git — создаёт ansible в ~/.config/git/identity (каталог — symlink на этот репозиторий).
+git/identity

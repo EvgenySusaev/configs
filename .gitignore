@@ -4,3 +4,6 @@ newsboat/history.*
 
 # Имя и почта git — создаёт ansible в ~/.config/git/identity (каталог — symlink на этот репозиторий).
 git/identity
+
+# Пути инструментов — пишет роль dev_toolchains в ~/.config/bash/ (до перехода на mise).
+bash/toolchains.sh

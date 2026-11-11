@@ -12,6 +12,8 @@
 	editor = nvim
 	autocrlf = input
 	pager = delta
+	# Только Git for Windows: пути длиннее 260 символов (MAX_PATH). На Linux игнорируется.
+	longpaths = true
 [pull]
 	rebase = true
 [interactive]

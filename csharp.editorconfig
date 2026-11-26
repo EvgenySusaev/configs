@@ -109,3 +109,27 @@ resharper_web_config_wrong_module_highlighting = warning
 indent_style = space
 indent_size = 4
 tab_width = 4
+
+# ---------------------------------------------------------------------------------------------
+# Compatibility with Roslyn: C# LSP (roslyn-language-server, csharp-ls, OmniSharp), `dotnet format`.
+# Roslyn ignores `resharper_*` keys and by default removes the extra spaces that ReSharper
+# alignment inserts. The keys below make Roslyn keep them instead of fighting Rider.
+# Check: `dotnet format whitespace --verify-no-changes` passes after formatting in Rider.
+# ---------------------------------------------------------------------------------------------
+[*.cs]
+# Aligned declarations (locals, fields, constants): `var sum   = 0.0;`
+csharp_space_around_declaration_statements = ignore
+# Aligned assignments: `sum   = t;`, `x   += 1;`
+# Side effect: Roslyn no longer normalises spaces around binary operators; Rider does it.
+csharp_space_around_binary_operators = ignore
+
+# Roslyn and ReSharper have different defaults here; K&R style for both.
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
+
+# Alignment in switch statements and switch expressions (ReSharper).
+# Roslyn has no option to keep it: wrap such blocks in
+#   #pragma warning disable format ... #pragma warning restore format
+# or do not run Roslyn formatting over them.
+resharper_int_align_switch_expressions = true
+resharper_int_align_switch_sections = true
